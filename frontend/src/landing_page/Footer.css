@@ -1,0 +1,15 @@
+.footerEle{
+    font-size: large;
+    font-weight: 500;
+}
+.footerLinks{
+    text-decoration: none;
+    color: #666666;
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-size: 14px;
+    font-weight: 400;
+}
+.footerLinks:hover{
+    color: #0D6EFD;
+}
