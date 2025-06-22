@@ -1,4 +1,3 @@
-
 export default function Hero(){
     return(
         <div className="container text-center mt-5 border-bottom">
