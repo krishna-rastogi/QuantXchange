@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
       });
       if (request.status === StatusCodes.OK) {
         localStorage.setItem("token", request.data.token);
-        navigate("/home");
+        navigate("/");
         return "Login Successful";
       }
     } catch (error) {
