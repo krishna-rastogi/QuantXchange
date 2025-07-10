@@ -4,3 +4,9 @@
 .nav-item a{
     font-weight: 400;
 }
+.active-nav {
+  background-color: #1976d2; 
+  color: white !important;
+  border-radius: 4px;
+  padding: 4px 10px; 
+}
