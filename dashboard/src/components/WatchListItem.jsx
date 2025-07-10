@@ -5,10 +5,10 @@ import WatchListActions from "./WatchListActions";
 export default function WatchListItem({ stock }) {
   const [showWatchlistActions, setShowWatchlistActions] = useState(false);
 
-  const handleMouseEnter = () => {
+  const handleMouseEnter = (evt) => {
     setShowWatchlistActions(true);
   };
-  const handleMouseExit = () => {
+  const handleMouseExit = (evt) => {
     setShowWatchlistActions(false);
   };
 
