@@ -35,8 +35,10 @@ export const AuthProvider = ({ children }) => {
         password
       });
       if (request.status === StatusCodes.OK) {
-        localStorage.setItem("token", request.data.token);
-        navigate("/");
+        const token = request.data.token;
+        localStorage.setItem("token", token);
+        window.location.href = `http://localhost:5174/?token=${token}`;
+
         return "Login Successful";
       }
     } catch (error) {

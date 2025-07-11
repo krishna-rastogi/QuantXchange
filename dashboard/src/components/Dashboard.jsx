@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import {jwtDecode} from "jwt-decode";
 
 import Apps from "./Apps";
 import Funds from "./Funds";
@@ -12,6 +13,17 @@ import WatchList from "./WatchList";
 import {GeneralContextProvider} from "./GeneralContext";
 
 export default function Dashboard(){
+  let username = "";
+  const token = localStorage.getItem("token");
+  if (token) {
+    try {
+      const decoded = jwtDecode(token);
+
+      username = decoded.username; 
+    } catch (error) {
+      console.error("Invalid token", error);
+    }
+  }
   return (
     <div className="dashboard-container">
       <GeneralContextProvider>
@@ -19,7 +31,7 @@ export default function Dashboard(){
       </GeneralContextProvider>
       <div className="content">
         <Routes>
-          <Route exact path="/" element={<Summary />} />
+          <Route exact path="/" element={<Summary username={username}/>} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/holdings" element={<Holdings />} />
           <Route path="/positions" element={<Positions />} />
