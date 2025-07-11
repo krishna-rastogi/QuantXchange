@@ -7,12 +7,12 @@ export default function Team() {
       <div className="row mt-5">
         <div className="col text-center mb-5" style={{ paddingLeft: "9rem" }}>
           <img
-            src="media/Images/nithinKamath.jpg"
+            src="media/Images/KrishnaRastogi.jpg"
             style={{ borderRadius: "50%", width: "55%" }}
             alt="Founder"
           />
-          <h5 className="mt-3">Nithin Kamath</h5>
-          <p>Founder, CEO</p>
+          <h5 className="mt-3">Krishna Rastogi</h5>
+          <p>Founder</p>
         </div>
         <div className="col" style={{ padding: "3rem 8rem 0 0" }}>
           <p>
