@@ -8,7 +8,7 @@ export const HoldingsProvider = ({ children }) => {
 
   const fetchHoldings = async () => {
     try {
-      await axios.get("http://localhost:8080/allHoldings").then((res) => {
+      await axios.get(`${import.meta.env.VITE_BACKEND_URL}/allHoldings`).then((res) => {
         setAllHoldings(res.data);
       });
     } catch (error) {

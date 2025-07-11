@@ -5,7 +5,7 @@ export default function Positions() {
   const [allPositions, setAllPositions] = useState([]);
 
   useEffect(()=>{
-    axios("http://localhost:8080/allPositions").then((res)=>{
+    axios(`${import.meta.env.VITE_BACKEND_URL}/allPositions`).then((res)=>{
       setAllPositions(res.data);
     });
   }, []);  

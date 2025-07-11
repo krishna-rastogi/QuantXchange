@@ -28,7 +28,7 @@ export default function BuyActionWindow({ uid }) {
       return;
     }
     try {
-      await axios.post("http://localhost:8080/newOrder", {
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/newOrder`, {
         name: uid,
         qty: stockQuantity,
         price: stockPrice,

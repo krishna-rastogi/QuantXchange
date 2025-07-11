@@ -9,7 +9,7 @@ export default function Orders() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await axios.get("http://localhost:8080/orders"); 
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/orders`); 
         console.log("Fetched orders:", res.data); 
         setOrders(res.data);
       } catch (err) {

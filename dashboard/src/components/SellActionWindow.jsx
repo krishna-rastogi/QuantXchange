@@ -14,7 +14,7 @@ export default function SellActionWindow({ uid }){
 
   const handleSellClick = () => {
     console.log("Sell clicked");
-    axios.post("http://localhost:8080/newOrder", {
+    axios.post(`${import.meta.env.VITE_BACKEND_URL}/newOrder`, {
       name: uid,
       qty: stockQuantity,
       price: stockPrice,

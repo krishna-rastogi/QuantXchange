@@ -1,17 +1,9 @@
 import { useState, useEffect, useContext } from "react";
-// import axios from "axios";
 import VerticalGraph from "./VerticalGraph";
 import { HoldingsContext } from "./HoldingsContext";
 
 export default function Holdings() {
   const { allHoldings } = useContext(HoldingsContext);
-
-  // useEffect(() => {
-  //   axios.get("http://localhost:8080/allHoldings").then((res) => {
-  //     console.log(res.data);
-  //     setAllHoldings(res.data);
-  //   });
-  // }, []);
 
   const labels = allHoldings.map((item) => item["name"]);
   const data = {
