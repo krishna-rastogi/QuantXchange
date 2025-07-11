@@ -12,6 +12,8 @@ import WatchList from "./WatchList";
 
 import { GeneralContextProvider } from "./GeneralContext";
 import { FundsProvider } from "./FundsContext";
+import { HoldingsProvider } from "./HoldingsContext";
+
 
 export default function Dashboard() {
   let username = "";
@@ -26,6 +28,7 @@ export default function Dashboard() {
     }
   }
   return (
+        <HoldingsProvider>
     <FundsProvider>
       <GeneralContextProvider>
         <div className="dashboard-container">
@@ -43,5 +46,6 @@ export default function Dashboard() {
         </div>
       </GeneralContextProvider>
     </FundsProvider>
+        </HoldingsProvider>
   );
 }

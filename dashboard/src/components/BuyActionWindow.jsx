@@ -6,12 +6,14 @@ import axios from "axios";
 import GeneralContext from "./GeneralContext";
 import { FundsContext } from "./FundsContext";
 import { watchlist } from "../data/data";
+import { HoldingsContext } from "./HoldingsContext";
 
 import "./BuyActionWindow.css";
 
 export default function BuyActionWindow({ uid }) {
   const { equity, withdrawFunds } = useContext(FundsContext);
   const generalContext = useContext(GeneralContext);
+  const { fetchHoldings } = useContext(HoldingsContext);
 
   const [stockQuantity, setStockQuantity] = useState(1);
   const [stockPrice, setStockPrice] = useState(0.0);
@@ -20,20 +22,25 @@ export default function BuyActionWindow({ uid }) {
   const currentPrice = stock ? stock.price : 0;
   const marginRequired = (currentPrice * stockQuantity).toFixed(2);
 
-  const handleBuyClick = () => {
+  const handleBuyClick = async () => {
     if (Number(marginRequired) > equity) {
       alert("Insufficient funds to place this order");
       return;
     }
-    axios.post("http://localhost:8080/newOrder", {
-      name: uid,
-      qty: stockQuantity,
-      price: stockPrice,
-      mode: "BUY",
-    });
+    try {
+      await axios.post("http://localhost:8080/newOrder", {
+        name: uid,
+        qty: stockQuantity,
+        price: stockPrice,
+        mode: "BUY",
+      });
 
-    withdrawFunds(parseFloat(marginRequired));
-    generalContext.closeBuyWindow();
+      withdrawFunds(parseFloat(marginRequired));
+      generalContext.closeBuyWindow();
+    } catch (error) {
+      console.error("Error placing order:", error);
+      alert("Failed to place order. Please try again.");
+    }
   };
 
   const handleCancelClick = () => {
