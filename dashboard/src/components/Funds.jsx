@@ -1,12 +1,38 @@
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { FundsContext } from "./FundsContext";
 
 export default function Funds(){
+  const { equity, addFunds, withdrawFunds } = useContext(FundsContext);
+
+  const handleAddFunds = () => {
+    const amt = parseFloat(prompt("Enter amount to add"));
+    if (!isNaN(amt) && amt > 0) {
+      addFunds(amt);
+    } else {
+      alert("Invalid amount");
+    }
+  };
+
+  const handleWithdrawFunds = () => {
+  const amt = parseFloat(prompt("Enter amount to withdraw"));
+  if (!isNaN(amt) && amt > 0) {
+    if (amt > equity) {
+      alert("Insufficient balance to withdraw this amount.");
+    } else {
+      withdrawFunds(amt);
+    }
+  } else {
+    alert("Invalid amount");
+  }
+};
+
   return (
     <>
       <div className="funds">
         <p>Instant, zero-cost fund transfers with UPI </p>
-        <Link className="btn btn-green">Add funds</Link>
-        <Link className="btn btn-blue">Withdraw</Link>
+        <Link className="btn btn-green" onClick={handleAddFunds}>Add funds</Link>
+        <Link className="btn btn-blue" onClick={handleWithdrawFunds}>Withdraw</Link>
       </div>
 
       <div className="row">

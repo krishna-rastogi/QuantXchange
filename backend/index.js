@@ -10,6 +10,7 @@ const PositionsModel = require("./models/PositionsModel");
 const OrdersModel = require("./models/OrdersModel");
 
 const authRoutes = require("./routes/auth");
+const ordersRoutes = require("./routes/orders");
 
 const bodyParser = require("body-parser");
 
@@ -31,6 +32,8 @@ mongoose
   });
 
 app.use("/", authRoutes);
+
+app.use("/orders", ordersRoutes);
 
 app.get("/allHoldings", async(req, res)=>{
   let allHoldings = await HoldingsModel.find({});

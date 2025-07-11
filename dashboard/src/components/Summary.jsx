@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import { FundsContext } from "./FundsContext";
+
 export default function Summary({username}){
+  const { equity } = useContext(FundsContext);
+
   return (
     <>
       <div className="username">
@@ -13,7 +18,7 @@ export default function Summary({username}){
 
         <div className="data">
           <div className="first">
-            <h3>3.74k</h3>
+            <h3>{(equity/1000).toFixed(2)}k</h3>
             <p>Margin available</p>
           </div>
           <hr />
@@ -23,7 +28,7 @@ export default function Summary({username}){
               Margins used <span>0</span>{" "}
             </p>
             <p>
-              Opening balance <span>3.74k</span>{" "}
+              Opening balance <span>{(equity/1000).toFixed(2)}k</span>{" "}
             </p>
           </div>
         </div>

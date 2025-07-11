@@ -18,7 +18,7 @@ export default function WatchListActions({ uid }) {
       <Tooltip title="Sell (S)" placement="top" arrow>
         <button className="sell">Sell</button>
       </Tooltip>
-      <Tooltip title="Analytics (A)" placement="top" arrow>
+      {/* <Tooltip title="Analytics (A)" placement="top" arrow>
         <button className="action">
           <BarChartOutlined className="icon"/>
         </button>
@@ -27,7 +27,7 @@ export default function WatchListActions({ uid }) {
         <button className="action">
           <MoreHoriz className="icon"/>
         </button>
-      </Tooltip>
+      </Tooltip> */}
     </span>
   );
 }
