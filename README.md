@@ -52,16 +52,3 @@ positions, and fund management – designed for learning, testing, and simulatin
 - Adjust the API base URLs if deploying on cloud.
 
 📁 **Project Structure**
-```kotlin
-QuantXchange/
-├── src/
-│   ├── components/
-│   ├── data/
-│   ├── App.js
-│   ├── Dashboard.jsx
-│   ├── FundsContext.jsx
-│   └── HoldingsContext.jsx
-├── public/
-├── package.json
-└── README.md
-```
