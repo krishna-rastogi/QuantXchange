@@ -37,7 +37,8 @@ export const AuthProvider = ({ children }) => {
       if (request.status === StatusCodes.OK) {
         const token = request.data.token;
         localStorage.setItem("token", token);
-        window.location.href = `http://localhost:5174/?token=${token}`;
+        // window.location.href = `http://localhost:5174/?token=${token}`;
+        window.location.href = `${import.meta.env.VITE_DASHBOARD_URL}/?token=${token}`;
 
         return "Login Successful";
       }
