@@ -17,6 +17,7 @@ export default function WatchListItem({ stock }) {
       <div className="item">
         <p className={stock.isDown ? "down" : "up"}>{stock.name}</p>
         <div className="itemInfo">
+          {showWatchlistActions && <WatchListActions uid={stock.name} />}
           <span className="percent">{stock.percent}</span>
           {stock.isDown ? (
             <KeyboardArrowDown className="down" />
@@ -26,7 +27,6 @@ export default function WatchListItem({ stock }) {
           <span className="price">{stock.price}</span>
         </div>
       </div>
-      {showWatchlistActions && <WatchListActions uid={stock.name} />}
     </li>
   );
 }

@@ -11,9 +11,9 @@ import Summary from "./Summary";
 import WatchList from "./WatchList";
 
 import { GeneralContextProvider } from "./GeneralContext";
+import { GeneralContextSellProvider } from "./GeneralContextSell";
 import { FundsProvider } from "./FundsContext";
 import { HoldingsProvider } from "./HoldingsContext";
-
 
 export default function Dashboard() {
   let username = "";
@@ -28,24 +28,30 @@ export default function Dashboard() {
     }
   }
   return (
-        <HoldingsProvider>
-    <FundsProvider>
-      <GeneralContextProvider>
-        <div className="dashboard-container">
-          <WatchList />
-          <div className="content">
-            <Routes>
-              <Route exact path="/" element={<Summary username={username} />} />
-              <Route path="/orders" element={<Orders />} />
-              <Route path="/holdings" element={<Holdings />} />
-              <Route path="/positions" element={<Positions />} />
-              <Route path="/funds" element={<Funds />} />
-              <Route path="/apps" element={<Apps />} />
-            </Routes>
+    <HoldingsProvider>
+      <FundsProvider>
+        <GeneralContextProvider>
+          <GeneralContextSellProvider>
+          <div className="dashboard-container">
+            <WatchList />
+            <div className="content">
+              <Routes>
+                <Route
+                  exact
+                  path="/"
+                  element={<Summary username={username} />}
+                />
+                <Route path="/orders" element={<Orders />} />
+                <Route path="/holdings" element={<Holdings />} />
+                <Route path="/positions" element={<Positions />} />
+                <Route path="/funds" element={<Funds />} />
+                <Route path="/apps" element={<Apps />} />
+              </Routes>
+            </div>
           </div>
-        </div>
-      </GeneralContextProvider>
-    </FundsProvider>
-        </HoldingsProvider>
+          </GeneralContextSellProvider>
+        </GeneralContextProvider>
+      </FundsProvider>
+    </HoldingsProvider>
   );
 }

@@ -7,14 +7,14 @@ export default function Stats(){
                     <h1 className="mb-5">Trust with confidence</h1>
                     <div className="mt-5">
                         <h2 className="fs-4">Customer-first always</h2>
-                        <p className="text-muted">That's why 1.6+ crore customers trust Zerodha with ~ ₹6 lakh crores of equity investments and contribute to 15% of daily retail exchange volumes in India.</p>
+                        <p className="text-muted">That's why 1.6+ crore customers trust QuantXchange with ~ ₹6 lakh crores of equity investments and contribute to 15% of daily retail exchange volumes in India.</p>
                     </div>
                     <div className="mt-5">
                         <h2 className="fs-4">No spam or gimmicks</h2>
                         <p className="text-muted">No gimmicks, spam, "gamification", or annoying push notifications. High quality apps that you use at your pace, the way you like. Our philosophies.</p>
                     </div>
                     <div className="mt-5">
-                        <h2 className="fs-4">The Zerodha universe</h2>
+                        <h2 className="fs-4">The QuantXchange universe</h2>
                         <p className="text-muted">Not just an app, but a whole ecosystem. Our investments in 30+ fintech startups offer you tailored services specific to your needs.</p>
                     </div>
                     <div className="mt-5">

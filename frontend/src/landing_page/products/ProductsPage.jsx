@@ -21,7 +21,7 @@ export default function ProductsPage() {
       <RightSection
         imgURL="media/Images/console.png"
         prodName="Console"
-        prodDescrip="The central dashboard for your Zerodha account. Gain insights into your trades and investments with in-depth reports and visualisations."
+        prodDescrip="The central dashboard for your QuantXchange account. Gain insights into your trades and investments with in-depth reports and visualisations."
         learnMore="/"
       />
       <LeftSection

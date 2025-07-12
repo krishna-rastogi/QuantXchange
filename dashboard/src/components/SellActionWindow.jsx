@@ -4,24 +4,39 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 import GeneralContextSell from "./GeneralContextSell";
+import { FundsContext } from "./FundsContext";
+import { HoldingsContext } from "./HoldingsContext";
+import { watchlist } from "../data/data";
 
 import "./BuyActionWindow.css";
 
-export default function SellActionWindow({ uid }){
-  const [stockQuantity, setStockQuantity] = useState(1);
-  const [stockPrice, setStockPrice] = useState(0.0);
+export default function SellActionWindow({ uid }) {
   const generalContextSell = useContext(GeneralContextSell);
+  const { addFunds } = useContext(FundsContext);
+  const { fetchHoldings } = useContext(HoldingsContext);
 
-  const handleSellClick = () => {
-    console.log("Sell clicked");
-    axios.post(`${import.meta.env.VITE_BACKEND_URL}/newOrder`, {
-      name: uid,
-      qty: stockQuantity,
-      price: stockPrice,
-      mode: "SELL",
-    });
+  const stock = watchlist.find((item) => item.name === uid);
+  const currentPrice = stock ? stock.price : 0;
 
-    generalContextSell.closeSellWindow();
+  const [stockQuantity, setStockQuantity] = useState(1);
+  const [stockPrice, setStockPrice] = useState(currentPrice);
+
+  const marginReceived = (currentPrice * stockQuantity).toFixed(2);
+
+  const handleSellClick = async () => {
+    try {
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/newOrder`, {
+        name: uid,
+        qty: stockQuantity,
+        price: stockPrice,
+        mode: "SELL",
+      });
+      addFunds(parseFloat(marginReceived));
+      fetchHoldings();
+      generalContextSell.closeSellWindow();
+    } catch (error) {
+      alert("Failed to place sell order. Please try again.");
+    }
   };
 
   const handleCancelClick = () => {
@@ -29,7 +44,7 @@ export default function SellActionWindow({ uid }){
   };
 
   return (
-    <div className="container" id="buy-window"> 
+    <div className="container" id="buy-window" draggable="true">
       <div className="regular-order">
         <div className="inputs">
           <fieldset>
@@ -57,11 +72,15 @@ export default function SellActionWindow({ uid }){
       </div>
 
       <div className="buttons">
-        <span>Margin required ₹140.65</span>
+        <span>Amount to receive ₹{marginReceived}</span>
         <div>
-          <Button className="btn btn-red" onClick={handleSellClick}>
+          <Link
+            className="btn btn-red"
+            onClick={handleSellClick}
+            style={{ background: "red" }}
+          >
             Sell
-          </Button>
+          </Link>
           <Link to="" className="btn btn-grey" onClick={handleCancelClick}>
             Cancel
           </Link>
@@ -69,5 +88,4 @@ export default function SellActionWindow({ uid }){
       </div>
     </div>
   );
-};
-
+}

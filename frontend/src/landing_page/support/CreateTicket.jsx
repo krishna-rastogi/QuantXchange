@@ -36,7 +36,7 @@ export default function CreateTicket() {
           </div>
           <div className="col p-5">
             <h5>
-              <i class="fa-solid fa-user"></i> Your Zerodha Account
+              <i class="fa-solid fa-user"></i> Your QuantXchange Account
             </h5>
             <div className="ms-4 mt-4">
               <a href="" style={{ textDecoration: "none", lineHeight: "2.5" }}>

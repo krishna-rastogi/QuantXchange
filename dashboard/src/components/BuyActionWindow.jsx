@@ -14,12 +14,13 @@ export default function BuyActionWindow({ uid }) {
   const { equity, withdrawFunds } = useContext(FundsContext);
   const generalContext = useContext(GeneralContext);
   const { fetchHoldings } = useContext(HoldingsContext);
-
-  const [stockQuantity, setStockQuantity] = useState(1);
-  const [stockPrice, setStockPrice] = useState(0.0);
-
+  
   const stock = watchlist.find((item) => item.name === uid);
   const currentPrice = stock ? stock.price : 0;
+
+  const [stockQuantity, setStockQuantity] = useState(1);
+  const [stockPrice, setStockPrice] = useState(currentPrice);
+
   const marginRequired = (currentPrice * stockQuantity).toFixed(2);
 
   const handleBuyClick = async () => {
